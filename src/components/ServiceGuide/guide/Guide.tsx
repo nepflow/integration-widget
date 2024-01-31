@@ -30,7 +30,7 @@ export default function Guide ({ steps, service, secondService, action, trigger 
               <div className={styles.childSteps}>
                 {step.childSteps.map((childStep, i) => (
                   <div key={i.toString()} className={styles.childStep}>
-                    {childStep.picSpecialType ? <SpecialImage service={service} secondService={secondService} trigger={trigger} action={action} type={childStep.picSpecialType} /> : <img className={styles.childStepPic} src={childStep.picUrl} />}
+                    {childStep.type ? <SpecialImage service={service} secondService={secondService} trigger={trigger} action={action} type={childStep.type} /> : <img className={styles.childStepPic} src={childStep.picUrl} />}
                     <div className={styles.childStepTitle} dangerouslySetInnerHTML={{ __html: childStep.text }}></div>
                   </div>
                 ))}

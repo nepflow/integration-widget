@@ -1,4 +1,4 @@
-![image info](./assets/logo_day.png)
+![image info](./assets/intro.png)
 
 # Integration Widget
 
