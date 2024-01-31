@@ -1,0 +1,43 @@
+:root {
+  --primary-color: #111;
+  --background-color: #f5f5f5;
+  --card-color: #ffffff;
+  --inner-space: 24px;
+}
+
+/* 
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background-color: #1b1b1b;
+  --card-color: #353535;
+  --primary-color: #fff;
+} 
+*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--primary-color);
+  background: var(--background-color);
+  padding: var(--inner-space);
+  min-height: 100px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

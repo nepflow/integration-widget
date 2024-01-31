@@ -1,4 +1,4 @@
-TODO: PIC
+![image info](./assets/logo_day.png)
 
 # Integration Widget
 
@@ -12,13 +12,13 @@ TODO: BADGES
 
 TODO: ABOUT BUILD AND USE CASES
 
+### Use with your existing framework
+
+- React JS: https://github.com/nepflow/react-integration-widget/
+
 ## Parameters
 
 TODO: PARAMETERS
-
-## Use with your existing framework
-
-- React JS: https://github.com/nepflow/react-integration-widget/
 
 ## Technical Support or Questions
 

@@ -1,0 +1,57 @@
+.steps {
+  padding-top: 10px;
+}
+
+.step {
+  margin-top: 12px;
+  padding-left: 35px;
+  font-size: 16px;
+  line-height: 26px;
+  position: relative;
+}
+.stepNumber {
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: #f5f5f5;
+  text-align: center;
+  margin-right: 5px;
+  position: absolute;
+  top: 2px;
+  left: 0;
+}
+
+.childSteps {
+  margin-top: 12px;
+}
+.childStep {
+  width: 320px;
+  min-height: 32px;
+  border: solid 1px #ccc;
+  border-radius: 8px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 16px 16px 0;
+  overflow: hidden;
+}
+.childStepPic {
+  width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 0;
+}
+.childStepTitle {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 7px 12px;
+  border-top: solid 1px #ccc;
+}
+
+.divider {
+  border-bottom: solid 1px #ccc;
+  margin: 35px 0;
+}

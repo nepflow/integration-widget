@@ -1,0 +1,23 @@
+.button {
+  background-color: #fff;
+  border: solid 1px #ccc;
+  padding: 8px 24px;
+  font-size: 15px;
+  line-height: 24px;
+  border-radius: 6px;
+
+  display: inline-block;
+  vertical-align: top;
+
+  min-width: 210px;
+  font-weight: 500;
+
+  cursor: pointer;
+  text-align: center;
+}
+
+.buttonIcon {
+  width: 22px;
+  height: 22px;
+  margin: 2px 6px 0 0;
+}
