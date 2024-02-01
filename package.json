@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "script:transpile": "babel scripts/loader-v1.js --out-file public/loader-v1.js --presets babel-preset-es2015",
+    "script:minimize": "terser public/loader-v1.js -o public/loader-v1.js",
+    "script:compile": "npm run script:transpile && npm run script:minimize"
   },
   "dependencies": {
     "axios": "^1.6.7",
@@ -24,6 +27,9 @@
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^43.0.1",
     "eslint-plugin-import": "^2.25.2",
@@ -32,6 +38,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "terser": "^5.27.0",
     "typescript": "*",
     "vite": "^5.0.8"
   }
