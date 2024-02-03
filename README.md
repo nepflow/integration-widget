@@ -33,7 +33,7 @@ import IntegrationWidget from '@nepflow/integration-widget';
 You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@nepflow/integration-widget).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@nepflow/integration-widget@1/dist/cjs/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nepflow/integration-widget@1/dist/lib.js"></script>
 ```
 
 ## Configuration
@@ -50,7 +50,7 @@ Create an element that should contain the widget
 If your app is integrated with [Zapier](https://zapier.com/):
 
 ```javascript
-const widget = IntegrationWidgetConfig(
+const widget = new NepflowIntegrationWidget(
   'integration-widget', // Element ID
   {
     zapierAppId: '<ZAPIER APP ID>', // Your Zapier app ID or slug
@@ -66,7 +66,7 @@ const widget = IntegrationWidgetConfig(
 You can use `customCards` parameter to show your native integrations:
 
 ```javascript
-const widget = IntegrationWidgetConfig(
+const widget = new NepflowIntegrationWidget(
   'integration-widget', // Element ID
   {
     zapierAppId: '<ZAPIER APP ID>', // Your Zapier app ID or slug
@@ -101,7 +101,7 @@ const widget = IntegrationWidgetConfig(
 If your app is not integrated with Zapier yet:
 
 ```javascript
-const widget = IntegrationWidgetConfig(
+const widget = new NepflowIntegrationWidget(
   'integration-widget', // Element ID
   {
     backgroundColor: '#f5f5f5',
