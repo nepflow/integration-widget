@@ -18,22 +18,26 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ./web/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/web/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
       
       - name: Install Dependencies
         run: npm install
+        working-directory: ./web
 
       - name: Build React App
         run: npm run build
+        working-directory: ./web
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: ./web
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: ./web

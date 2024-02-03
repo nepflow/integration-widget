@@ -15,6 +15,8 @@ class NepflowWidget {
     for (const [key, value] of Object.entries(params)) {
       if (typeof value === 'boolean') {
         searchParams.append(key, value ? 'true' : '');
+      } else if (typeof value === 'object') {
+        searchParams.append(key, JSON.stringify(value));
       } else if (value) {
         searchParams.append(key, value.toString());
       }
