@@ -1,11 +1,11 @@
-<img src="https://github.com/nepflow/integration-widget/raw/main/assets/intro.png" style="max-width: 800px; width: 100%;" />
+<img src="https://github.com/nepflow/integration-widget/raw/main/assets/intro.png" style="max-width: 800px; width: 100%; margin-bottom: 24px;" />
 
 # Integration Widget
 
-Add out integration to your app and allow users to explore **6,000+ Zapier integrations**.
+The widget allows your users to explore **6,000+ Zapier integrations** right inside your app.
 
 [![Production Deployment](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml/badge.svg?branch=main)](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml)
-
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [Get started](#getting-started) • [Build Widget](https://get-widget.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/)
 
@@ -13,7 +13,7 @@ Add out integration to your app and allow users to explore **6,000+ Zapier integ
 
 You can use [the online builder](https://get-widget.nepflow.dev) to customize the widget and get the installation code.
 
-### JavaScript
+### Use installation script
 
 If your app is integrated with [Zapier](https://zapier.com/):
 
@@ -76,7 +76,7 @@ You can use `nativeIntegrations` parameter to show your native integrations:
 </script>
 ```
 
-### Or use with your existing framework:
+### Use with your existing framework
 
 - [**React JS**](https://github.com/nepflow/react-integration-widget/)
 
