@@ -1,4 +1,4 @@
-![image info](./assets/intro.png)
+![image info](https://github.com/nepflow/integration-widget/raw/main/assets/intro.png)
 
 # Integration Widget
 
@@ -7,13 +7,13 @@ Add out integration to your app and allow users to explore **6,000+ Zapier integ
 [![Production Deployment](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml/badge.svg?branch=main)](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml)
 
 
-[Installation](#installation) • [Build Widget](https://get-widget.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/)
+[Get started](#getting-started) • [Build Widget](https://get-widget.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/)
 
-## Installation
+## Getting started
 
-Use [the online builder](https://get-widget.nepflow.dev) to customize the widget and get the installation code.
+You can use [the online builder](https://get-widget.nepflow.dev) to customize the widget and get the installation code.
 
-## JavaScript
+### JavaScript
 
 If your app is integrated with [Zapier](https://zapier.com/):
 
@@ -86,7 +86,7 @@ You can pass any of these parameters for your widget:
 
 | Parameter          | Description                                        | Type                                               | Default   |
 |--------------------|----------------------------------------------------|----------------------------------------------------|-----------|
-| zapierAppI         | Your Zapier app ID or slug                         | `string`                                           | #f5f5f5   |
+| zapierAppId        | Your Zapier app ID or slug                         | `string`                                           | #f5f5f5   |
 | backgroundColor    | The widget's background color (hex)                | `string`                                           | #ffffff   |
 | cardColor          | The color for the card components (hex)            | `string`                                           | #ffffff   |
 | cardBorderColor    | Card component border color (hex)                  | `string`                                           | #ffffff   |

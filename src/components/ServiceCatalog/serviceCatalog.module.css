@@ -46,7 +46,7 @@
 .listItem {
   min-width: 0;
   background-color: var(--card-color);
-  border: solid 1px var(--card-color);
+  border: solid 1px var(--card-border-color);
   border-radius: 12px;
   padding: 0 18px 0 56px;
   line-height: 54px;

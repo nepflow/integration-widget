@@ -39,6 +39,7 @@
   vertical-align: top;
   padding: 25px 25px 27px;
   background-color: var(--card-color);
+  border: solid 1px var(--card-border-color);
   color: #333;
   border-radius: 14px;
 }

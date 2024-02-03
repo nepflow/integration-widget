@@ -94,7 +94,7 @@ export default function ServiceCatalog () {
 
       <div className={[styles.list, data.loading && styles.listLoading].join(' ')}>
         {data.loading && [...Array(60)].map((i: number) => (
-          <div key={i.toString()} className={styles.listLink}>
+          <div key={i?.toString()} className={styles.listLink}>
             <div className={styles.listItem} />
           </div>
         ))}

@@ -15,6 +15,7 @@ export default function Root () {
   useEffect(() => {
     document.documentElement.style.setProperty('--background-color', config.backgroundColor)
     document.documentElement.style.setProperty('--card-color', config.cardColor)
+    document.documentElement.style.setProperty('--card-border-color', config.cardBorderColor)
     document.documentElement.style.setProperty('--inner-space', `${+(config.innerSpace)}px`)
     document.body.setAttribute('data-theme', config.theme)
   }, [config])
