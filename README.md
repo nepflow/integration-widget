@@ -1,4 +1,4 @@
-<img src="https://github.com/nepflow/integration-widget/raw/main/assets/intro.png" style="max-width: 800px; width: 100%; margin-bottom: 24px;" />
+<img src="https://github.com/nepflow/integration-widget/raw/main/assets/intro-v2.png" style="max-width: 800px; width: 100%; margin-bottom: 24px;" />
 
 # Integration Widget
 
