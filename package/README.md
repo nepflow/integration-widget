@@ -1,86 +1,58 @@
+<img alt="Nepflow widget with 6,000+ Zapier integrations" src="https://raw.githubusercontent.com/nepflow/integration-widget/main/web/assets/intro-v3.png" style="max-width: 800px; width: 100%; margin-bottom: 24px;" />
+
 # Integration Widget
 
 The widget allows your users to explore **6,000+ Zapier integrations** right inside your app.
 
 [![Production Deployment](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml/badge.svg?branch=main)](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml)
-[![@nepflow/integration-widget.svg](https://img.shields.io/npm/v/@nepflow/integration-widget.svg)](https://www.npmjs.com/package/@nepflow/integration-widget)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[Get started](#installation) • [Live Demo](https://demo.nepflow.dev/) • [Build Widget](https://demo.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/)
+[Get started](#getting-started) • [Live Demo](https://demo.nepflow.dev/) • [Build Widget](https://demo.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/)
 
-<img alt="Nepflow widget with 6,000+ Zapier integrations" src="https://raw.githubusercontent.com/nepflow/integration-widget/main/web/assets/intro-v3.png" style="max-width: 800px; width: 100%; margin: 12px 0;" />
-
-## Installation
+## Getting started
 
 You can use [the online builder](https://demo.nepflow.dev) to customize the widget and get the installation code.
 
-### Node.js package
-
-Install the package via NPM or Yarn
-
-```bash
-npm i @nepflow/integration-widget --save
-```
-
-Include module in your application
-
-```
-import IntegrationWidget from '@nepflow/integration-widget';
-```
-
-### Load from CDN
-
-You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@nepflow/integration-widget).
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/@nepflow/integration-widget@1/dist/cjs/index.min.js"></script>
-```
-
-## Configuration
-
-### Add element
-
-Create an element that should contain the widget
-```html
-<div id="integration-widget"></div>
-```
-
-### Initialization
+### Use installation script
 
 If your app is integrated with [Zapier](https://zapier.com/):
 
-```javascript
-const widget = IntegrationWidgetConfig(
-  'integration-widget', // Element ID
-  {
+```html
+<div id="integration-widget"></div>
+
+<script src="https://widget.nepflow.dev/loader-v1.js"></script>
+<script>
+  nepflowWidget.load('integration-widget', {
     zapierAppId: '<ZAPIER APP ID>', // Your Zapier app ID or slug
     backgroundColor: '#f5f5f5',
     cardColor: '#fff',
     cardBorderColor: '#fff',
     innerSpace: 24,
     autoVerticalResize: true
-  }
-);
+  });
+</script>
 ```
 
-You can use `customCards` parameter to show your native integrations:
+You can use `customIntegrations` parameter to show your native integrations:
 
-```javascript
-const widget = IntegrationWidgetConfig(
-  'integration-widget', // Element ID
-  {
+```html
+<div id="integration-widget"></div>
+
+<script src="https://widget.nepflow.dev/loader-v1.js"></script>
+<script>
+  nepflowWidget.load('integration-widget', {
     zapierAppId: '<ZAPIER APP ID>', // Your Zapier app ID or slug
     backgroundColor: '#f5f5f5',
     cardColor: '#fff',
     cardBorderColor: '#fff',
     innerSpace: '24px',
     autoVerticalResize: true,
-    customCards: [
-      // Showing a custom integration in the catalog
+    customIntegrations: [
+      // Showing a new integration in the catalog
       { 
-        id: 'custom_integration', 
-        name: 'Custom Integration', 
-        iconURL: 'https://example.com/foobar.png' 
+        id: 'new_integration', 
+        name: 'New Integration', 
+        iconURL: 'https://example.com/new_integration.png' 
       },
 
       // Replacing an existing Zapier app in the catalog
@@ -94,16 +66,18 @@ const widget = IntegrationWidgetConfig(
     onCardClick: function(id) {
       alert(id + ' clicked!')
     }
-  }
-);
+  });
+</script>
 ```
 
 If your app is not integrated with Zapier yet:
 
-```javascript
-const widget = IntegrationWidgetConfig(
-  'integration-widget', // Element ID
-  {
+```html
+<div id="integration-widget"></div>
+
+<script src="https://widget.nepflow.dev/loader-v1.js"></script>
+<script>
+  nepflowWidget.load('integration-widget', {
     backgroundColor: '#f5f5f5',
     cardColor: '#fff',
     cardBorderColor: '#fff',
@@ -112,8 +86,8 @@ const widget = IntegrationWidgetConfig(
     onCardClick: function(id) {
       alert(id + ' clicked!')
     }
-  }
-);
+  });
+</script>
 ```
 
 ### Use with your existing framework

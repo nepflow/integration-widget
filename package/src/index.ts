@@ -1,3 +1,5 @@
-import load from './utils/load'
+import { IntegrationWidget } from './models/IntegrationWidget'
+import { IntegrationWidgetConfig } from './models/IntegrationWidgetConfig'
 
-export { load }
+export { IntegrationWidgetConfig };
+export default IntegrationWidget;
