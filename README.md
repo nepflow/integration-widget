@@ -1,4 +1,4 @@
-![image info](https://github.com/nepflow/integration-widget/raw/main/assets/intro.png)
+<img src="https://github.com/nepflow/integration-widget/raw/main/assets/intro.png" style="max-width: 800px; width: 100%;" />
 
 # Integration Widget
 

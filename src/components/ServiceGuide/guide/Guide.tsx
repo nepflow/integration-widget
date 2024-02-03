@@ -1,6 +1,6 @@
 import styles from './guide.module.css'
 import { type Service, type ServiceAction, type ServiceTrigger } from '../../../models/service'
-import { type IntegrationGuide } from '../../../models/guide'
+import { type IntegrationGuide } from '../../../models/integrationGuide'
 import SpecialImage from '../../SpecialImage/SpecialImage'
 
 interface Props {
