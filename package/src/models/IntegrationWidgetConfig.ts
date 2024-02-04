@@ -2,7 +2,7 @@ interface CustomCard {
   id: string; 
   name: string; 
   iconURL: string; 
-  replacedZapierAppId: string;
+  replacedZapierAppId?: string;
 }
 
 export interface IntegrationWidgetConfig {

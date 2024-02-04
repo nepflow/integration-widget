@@ -20,7 +20,7 @@ export interface Service {
   name: string
   iconURL: string
 
-  isNative?: boolean
+  isCustom?: boolean
   isZapier?: boolean
 
   authType?: string

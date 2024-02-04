@@ -1,6 +1,6 @@
 {
   "name": "@nepflow/integration-widget",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -10,6 +10,7 @@
     "url": "git+https://github.com/nepflow/integration-widget.git"
   },
   "scripts": {
+    "dev": "http-server ./dist",
     "build": "yarn build:esm && yarn build:cjs && yarn build:browser",
     "build:browser": "webpack",
     "build:esm": "tsc",
@@ -33,6 +34,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/react": "^18.2.52",
+    "http-server": "^14.1.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.90.1",

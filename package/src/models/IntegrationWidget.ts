@@ -1,10 +1,17 @@
 import { IntegrationWidgetConfig } from "./IntegrationWidgetConfig";
 
+interface IframeConfig {
+  baseUrl?: string;
+  width?: string;
+  height?: string;
+  minHeight?: string;
+}
+
 export class IntegrationWidget {
   private readonly baseUrl: string;
 
-  constructor(elementId: string, params: IntegrationWidgetConfig) {
-    this.baseUrl = 'https://widget.nepflow.dev';
+  constructor(elementId: string, params: IntegrationWidgetConfig, iframeParams?: IframeConfig) {
+    this.baseUrl = iframeParams?.baseUrl ?? 'https://widget.nepflow.dev';
 
     const widgetElement = document.getElementById(elementId);
     if (!widgetElement) {
@@ -19,17 +26,19 @@ export class IntegrationWidget {
         searchParams.append(key, value ? 'true' : '');
       } else if (typeof value === 'object') {
         searchParams.append(key, JSON.stringify(value));
-      } else if (value) {
+      } else if (typeof value === 'number') {
         searchParams.append(key, value.toString());
+      } else if (typeof value === 'string') {
+        searchParams.append(key, value);
       }
     }
 
     // Create the iframe element
     const iframe = document.createElement('iframe');
     iframe.src = `${this.baseUrl}/${params.zapierAppId || ''}?${searchParams.toString()}`;
-    iframe.style.width = '100%'; 
-    iframe.style.height = '100%';
-    iframe.style.minHeight = '500px';
+    iframe.style.width = iframeParams?.width ?? '100%'; 
+    iframe.style.height = iframeParams?.height ?? '100%';
+    iframe.style.minHeight = iframeParams?.minHeight ?? '500px';
     iframe.frameBorder = '0';     
 
     // Append the iframe to the integration-widget element
@@ -52,7 +61,7 @@ export class IntegrationWidget {
           break;
         case 'handleCardClick':
           if (typeof params.onCardClick === 'function') {
-            params.onCardClick(data.serviceId);
+            params.onCardClick(data.id);
           };
           break;
       }

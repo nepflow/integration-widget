@@ -36,6 +36,7 @@ body {
   background: var(--background-color);
   padding: var(--inner-space);
   min-height: 100px;
+  overflow-x: hidden;
 }
 
 a {

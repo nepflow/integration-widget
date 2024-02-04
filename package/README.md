@@ -1,12 +1,12 @@
 # Integration Widget
 
-The widget allows your users to explore **6,000+ Zapier integrations** right inside your app.
+The widget allows your users to explore 6,000+ Zapier integrations right inside your app.
 
 [![Production Deployment](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml/badge.svg?branch=main)](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml)
 [![@nepflow/integration-widget.svg](https://img.shields.io/npm/v/@nepflow/integration-widget.svg)](https://www.npmjs.com/package/@nepflow/integration-widget)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-[Get started](#installation) • [Live Demo](https://demo.nepflow.dev/) • [Build Widget](https://demo.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/)
+[Get started](#installation) • [Live Demo](https://demo.nepflow.dev/) • [Build Widget](https://demo.nepflow.dev/) • [Documentation](https://docs.nepflow.dev/) • [NPM package](https://www.npmjs.com/package/@nepflow/integration-widget)
 
 <img alt="Nepflow widget with 6,000+ Zapier integrations" src="https://raw.githubusercontent.com/nepflow/integration-widget/main/web/assets/intro-v3.png" style="max-width: 800px; width: 100%; margin: 12px 0;" />
 
@@ -22,10 +22,10 @@ Install the package via NPM or Yarn
 npm i @nepflow/integration-widget --save
 ```
 
-Include module in your application
+Import module in your application
 
 ```
-import IntegrationWidget from '@nepflow/integration-widget';
+import NepflowIntegrationWidget from '@nepflow/integration-widget';
 ```
 
 ### Load from CDN
@@ -33,7 +33,7 @@ import IntegrationWidget from '@nepflow/integration-widget';
 You can load specific version of package from [jsDelivr CDN](https://www.jsdelivr.com/package/npm/@nepflow/integration-widget).
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@nepflow/integration-widget@1/dist/lib.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@nepflow/integration-widget@1/dist/bundle.js"></script>
 ```
 
 ## Configuration
@@ -58,12 +58,33 @@ const widget = new NepflowIntegrationWidget(
     cardColor: '#fff',
     cardBorderColor: '#fff',
     innerSpace: 24,
-    autoVerticalResize: true
+    autoVerticalResize: true,
+    onCardClick: function(id) {
+      console.log('card clicked:', id)
+    }
   }
 );
 ```
 
-You can use `customCards` parameter to show your native integrations:
+If your app is not integrated with Zapier:
+
+```javascript
+const widget = new NepflowIntegrationWidget(
+  'integration-widget', // Element ID
+  {
+    backgroundColor: '#f5f5f5',
+    cardColor: '#fff',
+    cardBorderColor: '#fff',
+    innerSpace: 24,
+    autoVerticalResize: true,
+    onCardClick: function(id) {
+      alert(id + ' clicked!')
+    }
+  }
+);
+```
+
+You can use `customCards` parameter to show your native integrations and replacing existing Zapier apps:
 
 ```javascript
 const widget = new NepflowIntegrationWidget(
@@ -98,27 +119,9 @@ const widget = new NepflowIntegrationWidget(
 );
 ```
 
-If your app is not integrated with Zapier yet:
+<!-- ### Use with your existing framework
 
-```javascript
-const widget = new NepflowIntegrationWidget(
-  'integration-widget', // Element ID
-  {
-    backgroundColor: '#f5f5f5',
-    cardColor: '#fff',
-    cardBorderColor: '#fff',
-    innerSpace: 24,
-    autoVerticalResize: true,
-    onCardClick: function(id) {
-      alert(id + ' clicked!')
-    }
-  }
-);
-```
-
-### Use with your existing framework
-
-- [**React JS**](https://github.com/nepflow/react-integration-widget/)
+- [**React JS**](https://github.com/nepflow/react-integration-widget/) -->
 
 ## Parameters
 
@@ -131,7 +134,7 @@ You can pass any of these parameters for your widget:
 | cardColor          | The color for the card components (hex)            | `string`                                           | #ffffff   |
 | cardBorderColor    | Card component border color (hex)                  | `string`                                           | #ffffff   |
 | innerSpace         | The padding inside the widget (px)                 | `number`                                           | 24        |
-| verticalAutoResize | Enables automatic vertical resizing for the iframe | `boolean`                                          | false     |
+| autoVerticalResize | Enables automatic vertical resizing for the iframe | `boolean`                                          | false     |
 | onCardClick        | Called when card is clicked                        | `(id: string) => void`                             | -         |
 | customIntegrations | Array of custom or native integrations             | `{ id: string; name: string; iconURL: string; replacedZapierAppId: string; }[]` | []        |
 

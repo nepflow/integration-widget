@@ -2,7 +2,7 @@ const path = require("path")
 
 module.exports = {
   mode: "production",
-  entry : "./src/lib.ts",
+  entry : "./src/bundle.ts",
   module: {
     rules: [
       {
@@ -17,6 +17,6 @@ module.exports = {
   },
   output : {
     path: path.resolve(__dirname, "dist"),
-    filename: "lib.js"
+    filename: "bundle.js"
   }
 }

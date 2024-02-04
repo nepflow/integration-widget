@@ -1,6 +1,6 @@
 type Action =
     | { action: 'setWidgetHeight', data: { widgetHeight: number } }
-    | { action: 'handleServiceClick', data: { serviceId: string } }
+    | { action: 'handleCardClick', data: { id: string } }
 
 // Send a message from the iframe to the parent window
 function postMessageToParent (action: Action) {
