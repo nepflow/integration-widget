@@ -19,12 +19,12 @@ You can use [the online builder](https://demo.nepflow.dev) to customize the widg
 Install the package via NPM or Yarn
 
 ```bash
-npm i @nepflow/integration-widget --save
+npm install @nepflow/integration-widget --save
 ```
 
 Import module in your application
 
-```
+```javascript
 import NepflowIntegrationWidget from '@nepflow/integration-widget';
 ```
 
@@ -94,7 +94,7 @@ const widget = new NepflowIntegrationWidget(
     backgroundColor: '#f5f5f5',
     cardColor: '#fff',
     cardBorderColor: '#fff',
-    innerSpace: '24px',
+    innerSpace: 24,
     autoVerticalResize: true,
     customCards: [
       // Showing a custom integration in the catalog

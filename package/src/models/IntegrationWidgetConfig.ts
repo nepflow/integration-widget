@@ -6,12 +6,12 @@ interface CustomCard {
 }
 
 export interface IntegrationWidgetConfig {
-  zapierAppId: string;
+  zapierAppId?: string;
   backgroundColor: string;
   cardColor: string;
   cardBorderColor: string;
   innerSpace: number;
   autoVerticalResize: boolean;
-  onCardClick: (id: string) => void;
-  customCards: CustomCard[];
+  onCardClick?: (id: string) => void;
+  customCards?: CustomCard[];
 }
