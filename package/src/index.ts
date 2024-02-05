@@ -1,5 +1,5 @@
 import { IntegrationWidget as NepflowIntegrationWidget } from './models/IntegrationWidget'
-import { IntegrationWidgetConfig } from './models/IntegrationWidgetConfig'
+import { type IntegrationWidgetConfig } from './models/IntegrationWidgetConfig'
 
-export { IntegrationWidgetConfig };
-export default NepflowIntegrationWidget;
+export type { IntegrationWidgetConfig }
+export default NepflowIntegrationWidget

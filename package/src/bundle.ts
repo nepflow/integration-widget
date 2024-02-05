@@ -2,11 +2,11 @@ import { IntegrationWidget as NepflowIntegrationWidget } from './models/Integrat
 
 declare global {
   interface Window {
-    NepflowIntegrationWidget: Function;
+    NepflowIntegrationWidget: Function
   }
 }
 
 // Prevent tree-shaking
-window.NepflowIntegrationWidget = NepflowIntegrationWidget;
+window.NepflowIntegrationWidget = NepflowIntegrationWidget
 
-export default NepflowIntegrationWidget;
+export default NepflowIntegrationWidget

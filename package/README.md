@@ -2,6 +2,8 @@
 
 The widget allows your users to explore 6,000+ Zapier integrations right inside your app.
 
+Learn more about the widget on our website: [nepflow.dev](https://nepflow.dev)
+
 [![Production Deployment](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml/badge.svg?branch=main)](https://github.com/nepflow/integration-widget/actions/workflows/production.yaml)
 [![@nepflow/integration-widget.svg](https://img.shields.io/npm/v/@nepflow/integration-widget.svg)](https://www.npmjs.com/package/@nepflow/integration-widget)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -47,26 +49,7 @@ Create an element that should contain the widget
 
 ### Initialization
 
-If your app is integrated with [Zapier](https://zapier.com/):
-
-```javascript
-const widget = new NepflowIntegrationWidget(
-  'integration-widget', // Element ID
-  {
-    zapierAppId: '<ZAPIER APP ID>', // Your Zapier app ID or slug
-    backgroundColor: '#f5f5f5',
-    cardColor: '#fff',
-    cardBorderColor: '#fff',
-    innerSpace: 24,
-    autoVerticalResize: true,
-    onCardClick: function(id) {
-      console.log('card clicked:', id)
-    }
-  }
-);
-```
-
-If your app is not integrated with Zapier:
+Basic usage:
 
 ```javascript
 const widget = new NepflowIntegrationWidget(
@@ -84,13 +67,32 @@ const widget = new NepflowIntegrationWidget(
 );
 ```
 
+If your app is integrated with [Zapier](https://zapier.com/), your users can see [integration guides](https://nepflow.dev/#guides):
+
+```javascript
+const widget = new NepflowIntegrationWidget(
+  'integration-widget', // Element ID
+  {
+    zapierAppId: '<ZAPIER APP SLUG>', // Your Zapier app key
+    backgroundColor: '#f5f5f5',
+    cardColor: '#fff',
+    cardBorderColor: '#fff',
+    innerSpace: 24,
+    autoVerticalResize: true,
+    onCardClick: function(id) {
+      console.log('card clicked:', id)
+    }
+  }
+);
+```
+
 You can use `customCards` parameter to show your native integrations and replacing existing Zapier apps:
 
 ```javascript
 const widget = new NepflowIntegrationWidget(
   'integration-widget', // Element ID
   {
-    zapierAppId: '<ZAPIER APP ID>', // Your Zapier app ID or slug
+    zapierAppId: '<ZAPIER APP SLUG>', // Your Zapier app key
     backgroundColor: '#f5f5f5',
     cardColor: '#fff',
     cardBorderColor: '#fff',
