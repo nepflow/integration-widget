@@ -140,6 +140,7 @@ You can pass any of these parameters for your widget:
 | onCardClick        | Called when card is clicked                        | `(id: string) => void`                             | -         |
 | customIntegrations | Array of custom or native integrations             | `{ id: string; name: string; iconURL: string; replacedZapierAppId: string; }[]` | []        |
 
+
 ## Technical Support or Questions
 
 If you have questions or need help integrating the editor please [contact us](https://nepflow.dev/contact-us) instead of opening an issue.

@@ -8,9 +8,11 @@ interface IframeConfig {
 }
 
 export class IntegrationWidget {
+  private readonly entityId: string
   private readonly baseUrl: string
 
   constructor (elementId: string, params: IntegrationWidgetConfig, iframeParams?: IframeConfig) {
+    this.entityId = this.generateEntityId()
     this.baseUrl = iframeParams?.baseUrl ?? 'https://widget.nepflow.dev'
 
     const widgetElement = document.getElementById(elementId)
@@ -33,6 +35,12 @@ export class IntegrationWidget {
       }
     }
 
+    // Add widgetId
+    searchParams.append('entityId', this.entityId)
+
+    // Add parent window host
+    searchParams.append('appHost', window.location.host)
+
     // Create the iframe element
     const iframe = document.createElement('iframe')
     iframe.src = `${this.baseUrl}/${params.zapierAppId || ''}?${searchParams.toString()}`
@@ -52,7 +60,12 @@ export class IntegrationWidget {
         return
       }
 
-      const { action, data } = event.data
+      const { action, data, entityId: receivedEntityId } = event.data
+
+      if (receivedEntityId !== this.entityId) {
+        return
+      }
+
       console.debug('[Nepflow] Received message:', action, data)
 
       switch (action) {
@@ -61,10 +74,16 @@ export class IntegrationWidget {
           break
         case 'handleCardClick':
           if (typeof params.onCardClick === 'function') {
-            params.onCardClick(data.id)
+            params.onCardClick(data.id as string)
           };
           break
       }
     })
+  }
+
+  private generateEntityId (): string {
+    const prefix = 'integration-widget-'
+    const randomSuffix = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    return prefix + randomSuffix
   }
 }

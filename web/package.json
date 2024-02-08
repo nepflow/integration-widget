@@ -8,10 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "script:transpile": "babel scripts/loader-v1.js --out-file public/loader-v1.js --presets babel-preset-es2015",
-    "script:minimize": "terser public/loader-v1.js -o public/loader-v1.js",
-    "script:compile": "npm run script:transpile && npm run script:minimize"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.6.7",

@@ -32,13 +32,13 @@ export default function ServiceCatalog () {
   })
 
   const newCustomCardsCount = useMemo(() => {
-    return searchValue ? 0 : config.customCards?.filter(c => !c.replacedZapierAppId)?.length;
-  }, [config.customCards, searchValue]);
+    return searchValue ? 0 : config.customCards?.filter(c => !c.replacedZapierAppId)?.length
+  }, [config.customCards, searchValue])
 
   useEffect(() => {
-    setData({ services: [], loading: true });
+    setData({ services: [], loading: true })
 
-    loadServices(undefined, 0, 60 - newCustomCardsCount);
+    loadServices(undefined, 0, 60 - newCustomCardsCount)
   }, [])
 
   useEffect(() => {
@@ -88,12 +88,12 @@ export default function ServiceCatalog () {
   }
 
   const services: Service[] = useMemo(() => {
-    const services = [...data.services];
+    const services = [...data.services]
 
     if (config.customCards?.length) {
-      config.customCards.map(customCard => {
+      config.customCards.forEach(customCard => {
         if (customCard.replacedZapierAppId) {
-          const replaceableServiceIndex = services.findIndex(s => s.id === customCard.replacedZapierAppId);
+          const replaceableServiceIndex = services.findIndex(s => s.id === customCard.replacedZapierAppId)
           if (replaceableServiceIndex !== -1) {
             services[replaceableServiceIndex] = {
               id: customCard.id,
@@ -101,7 +101,7 @@ export default function ServiceCatalog () {
               iconURL: customCard.iconURL,
               isCustom: true,
               triggers: [],
-              actions: [],
+              actions: []
             }
           };
         } else if (!searchValue) {
@@ -111,14 +111,14 @@ export default function ServiceCatalog () {
             iconURL: customCard.iconURL,
             isCustom: true,
             triggers: [],
-            actions: [],
+            actions: []
           })
         }
-      });
+      })
     };
-    
-    return services;
-  }, [data.services, config.customCards]);
+
+    return services
+  }, [data.services, config.customCards])
 
   return (
     <div className={styles.container}>
@@ -139,7 +139,7 @@ export default function ServiceCatalog () {
         ))}
 
         {!data.loading && services.map(service => (
-          <div key={service.id} className={styles.listLink} onClick={() => handleServiceClick(service)}>
+          <div key={service.id} className={styles.listLink} onClick={() => { handleServiceClick(service) }}>
             <div className={styles.listItem}>
               <img src={service.iconURL} className={styles.listItemIcon} />
               <span className={styles.listItemName}>

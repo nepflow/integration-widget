@@ -9,7 +9,7 @@ export const defaultConfig: Config = {
   cardBorderColor: configSearchParams.get('cardBorderColor') || '#fff',
   innerSpace: configSearchParams.has('innerSpace') ? parseInt(configSearchParams.get('innerSpace')!) : 24,
   autoVerticalResize: configSearchParams.get('autoVerticalResize') === 'true',
-  customCards: configSearchParams.has('customCards') ? JSON.parse(configSearchParams.get('customCards')!) : [],
+  customCards: configSearchParams.has('customCards') ? JSON.parse(configSearchParams.get('customCards')!) : []
 }
 
 const ConfigContext = createContext<Config>(defaultConfig)

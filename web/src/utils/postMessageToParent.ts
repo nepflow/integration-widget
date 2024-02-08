@@ -1,3 +1,5 @@
+import { entityId } from '../globals'
+
 type Action =
     | { action: 'setWidgetHeight', data: { widgetHeight: number } }
     | { action: 'handleCardClick', data: { id: string } }
@@ -6,7 +8,8 @@ type Action =
 function postMessageToParent (action: Action) {
   window.parent?.postMessage({
     action: action.action,
-    data: action.data
+    data: action.data,
+    entityId
   }, '*')
 }
 
