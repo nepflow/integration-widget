@@ -6,15 +6,6 @@
   --inner-space: 24px;
 }
 
-/* 
-[data-theme="dark"] {
-  color-scheme: dark;
-  --background-color: #1b1b1b;
-  --card-color: #353535;
-  --primary-color: #fff;
-} 
-*/
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -31,12 +22,24 @@ body {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   color: var(--primary-color);
   background: var(--background-color);
   padding: var(--inner-space);
   min-height: 100px;
   overflow-x: hidden;
+}
+
+body, input, button {
+  font-family: 'Inter', sans-serif;
+}
+
+input::placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+input::-ms-input-placeholder {
+  color: #bbb;
 }
 
 a {

@@ -1,0 +1,39 @@
+.container {
+  min-height: 500px;
+}
+
+.space {
+  height: 42px;
+}
+
+.card {
+  width: 100%;
+  max-width: 960px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 25px 25px 27px;
+  background-color: var(--card-color);
+  border: solid 1px var(--card-border-color);
+  color: #333;
+  border-radius: 14px;
+}
+.card a {
+  color: blue;
+}
+.card a:hover {
+  text-decoration: underline;
+}
+.card p {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.guideLoading {
+  border-radius: 8px;
+  text-align: center;
+  padding: 24px 16px;
+}
+.guideLoadingIcon {
+  margin-right: 8px;
+  opacity: 0.8;
+}

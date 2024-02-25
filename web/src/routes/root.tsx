@@ -6,6 +6,7 @@ import getService from '../clients/api/queries/getService'
 import ConfigContext, { defaultConfig } from '../contexts/configContext'
 import { type Config } from '../models/config'
 import postMessageToParent from '../utils/postMessageToParent'
+import FullScreenLoading from '../components/FullScreenLoading'
 
 export default function Root () {
   const { rootServiceId } = useParams()
@@ -62,7 +63,13 @@ export default function Root () {
     <ConfigContext.Provider value={config}>
       <RootServiceContext.Provider value={rootService}>
         <div ref={contentRef}>
-          <Outlet />
+          {(rootServiceId && !rootService)
+            ? (
+            <FullScreenLoading />
+              )
+            : (
+            <Outlet />
+              )}
         </div>
       </RootServiceContext.Provider>
     </ConfigContext.Provider>

@@ -7,12 +7,14 @@ export interface ServiceTrigger {
   id: string
   name: string
   serviceId: string
+  needs: string[]
 }
 
 export interface ServiceAction {
   id: string
   name: string
   serviceId: string
+  needs: string[]
 }
 
 export interface Service {
@@ -27,4 +29,6 @@ export interface Service {
   authFields?: AuthField[]
   triggers: ServiceTrigger[]
   actions: ServiceAction[]
+
+  recommendationsCount?: number
 }

@@ -1,0 +1,26 @@
+.breadcrumbs {
+  font-size: 14px;
+  line-height: 14px;
+  color: #777;
+  cursor: default;
+}
+
+.breadcrumbsItem {
+  display: inline-block;
+  margin-right: 8px;
+  line-height: 14px;
+}
+.breadcrumbsItem a {
+  color: #555;
+}
+.breadcrumbsItem a:hover {
+  color: #333;
+}
+
+.breadcrumbsItemSeparator {
+  display: inline-block;
+  margin-left: 8px;
+  line-height: 14px;
+  opacity: 0.5;
+  margin-top: 0;
+}

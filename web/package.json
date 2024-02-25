@@ -30,6 +30,7 @@
     "babel-preset-es2015": "^6.24.1",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-css-modules": "^2.12.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",

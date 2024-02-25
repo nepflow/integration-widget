@@ -1,0 +1,19 @@
+.banner {
+  border-radius: 12px;
+  max-width: 480px;
+  padding: 0 30px;
+  margin: 75px auto 45px;
+  text-align: center;
+}
+.bannerTitle {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #555;
+}
+.bannerText {
+  font-size: 14px;
+  line-height: 24px;
+  color: #888;
+}

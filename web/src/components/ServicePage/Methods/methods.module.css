@@ -1,0 +1,73 @@
+.container {
+  min-height: 500px;
+}
+
+.recommendations {
+  margin-top: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 960px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 25px 25px 27px;
+  color: #333;
+  border-radius: 14px;
+}
+
+.card a {
+  color: blue;
+}
+.card a:hover {
+  text-decoration: underline;
+}
+
+.recommendationsLoading {
+  cursor: progress;
+}
+.recommendationsLoading .card {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-color: transparent;
+  cursor: progress;
+}
+
+.recommendation {
+  display: block;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.recommendationIcons {
+  float: left;
+  margin: -6px 16px 0 0;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  height: 32px;
+  padding: 4px 6px 0;
+}
+.recommendationIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+
+  display: inline-block;
+  vertical-align: top;
+}
+.recommendationIcon:not(:last-child) {
+  margin-right: 8px;
+}
+
+.recommendationTitle {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

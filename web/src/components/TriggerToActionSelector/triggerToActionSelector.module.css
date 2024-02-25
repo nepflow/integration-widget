@@ -1,0 +1,55 @@
+.header {
+  max-width: 900px;
+}
+
+.headerTrigger,
+.headerPointer,
+.headerAction {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.headerPointer {
+  width: 10%;
+  text-align: center;
+}
+.headerPointerArrow {
+  margin: 36px auto 0;
+  opacity: 0.3;
+}
+
+.headerTrigger,
+.headerAction {
+  width: 45%;
+}
+
+.headerFieldLabel {
+  font-size: 14px;
+  line-height: 24px;
+  margin: -3px 0 8px;
+  color: #666;
+}
+
+.headerSelectOptionIcon {
+  display: inline-block;
+  vertical-align: top;
+  width: 18px;
+  height: 18px;
+  margin: 2px 8px 0 0;
+}
+.headerSelectOptionLabel {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+@media (max-width: 700px) {
+  .headerTrigger,
+  .headerPointer,
+  .headerAction {
+    width: 100%;
+  }
+  
+  .headerPointerArrow {
+    display: none;
+  }
+}

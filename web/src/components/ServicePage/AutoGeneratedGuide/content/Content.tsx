@@ -1,7 +1,7 @@
-import styles from './guide.module.css'
-import { type Service, type ServiceAction, type ServiceTrigger } from '../../../models/service'
-import { type IntegrationGuide } from '../../../models/integrationGuide'
-import SpecialImage from '../../SpecialImage/SpecialImage'
+import styles from './content.module.css'
+import { type Service, type ServiceAction, type ServiceTrigger } from '../../../../models/service'
+import { type IntegrationGuide } from '../../../../models/integrationGuide'
+import SpecialImage from '../../../SpecialImage/SpecialImage'
 
 interface Props {
   trigger: ServiceTrigger
@@ -12,12 +12,8 @@ interface Props {
 }
 
 export default function Guide ({ steps, service, secondService, action, trigger }: Props) {
-  // ...
-
   return (
     <>
-      <div className={styles.divider} />
-
       <p>To set up this integration, we'll use Zapier, a tool for creating automated integrations.</p>
 
       <div className={styles.steps}>

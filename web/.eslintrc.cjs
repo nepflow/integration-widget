@@ -5,7 +5,8 @@ module.exports = {
     },
     "extends": [
         "standard-with-typescript",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:css-modules/recommended"
     ],
     "overrides": [
         {
@@ -25,7 +26,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "css-modules"
     ],
     "rules": {
         "react/react-in-jsx-scope": "off",

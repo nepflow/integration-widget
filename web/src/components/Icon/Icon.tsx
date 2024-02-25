@@ -1,6 +1,6 @@
 import styles from './icon.module.css'
 
-export type IconKey = 'loading' | 'search' | 'arrowLeft' | 'arrowRightCircle'
+export type IconKey = 'loading' | 'search' | 'arrowLeft' | 'arrowRightCircle' | 'chevronRight'
 
 interface Props {
   icon: IconKey

@@ -1,13 +1,14 @@
 import styles from './serviceCatalog.module.css'
 import Icon from '../Icon/Icon'
 import Button from '../Button/Button'
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { type Service } from '../../models/service'
 import { useNavigate, useParams } from 'react-router-dom'
 import getServices from '../../clients/api/queries/getServices'
 import postMessageToParent from '../../utils/postMessageToParent'
 import ConfigContext from '../../contexts/configContext'
+import Card from '../Card'
 
 interface Data {
   services: Service[]
@@ -17,12 +18,13 @@ interface Data {
 }
 
 export default function ServiceCatalog () {
-  const config = useContext(ConfigContext)
-  const { rootServiceId } = useParams()
   const navigate = useNavigate()
+  const { rootServiceId } = useParams()
 
   const [search, setSearch] = useState('')
   const [searchValue] = useDebounce(search, 1000)
+
+  const config = useContext(ConfigContext)
 
   const [data, setData] = useState<Data>({
     services: [],
@@ -47,8 +49,8 @@ export default function ServiceCatalog () {
     loadServices(searchValue, 0, 60 - newCustomCardsCount)
   }, [searchValue, newCustomCardsCount])
 
-  const loadServices = async (search: string = '', skip: number = 0, take: number = 60) => {
-    const services = await getServices(search, skip, take)
+  const loadServices = useCallback(async (search: string = '', skip: number = 0, take: number = 60) => {
+    const services = await getServices(rootServiceId || undefined, search, skip, take)
 
     setData({
       services: skip > 0 ? [...data.services, ...services] : services,
@@ -56,27 +58,27 @@ export default function ServiceCatalog () {
       appendLoading: false,
       searchLoading: false
     })
-  }
+  }, [data])
 
-  const loadNextServices = async () => {
+  const loadNextServices = useCallback(async () => {
     setData({ services: data.services, appendLoading: true })
 
     await loadServices(searchValue, data.services.length + newCustomCardsCount)
-  }
+  }, [data, searchValue])
 
-  const onChangeSearch = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleSearchChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
     setData({ searchLoading: true, services: data.services })
 
     setSearch(e.currentTarget.value)
-  }
+  }, [data])
 
-  const onClickLoadMore = () => {
+  const handleLoadMoreClick = () => {
     loadNextServices()
   }
 
   const handleServiceClick = (service: Service) => {
     if (rootServiceId && !service.isCustom) {
-      navigate(`/${rootServiceId}/guide/${service.id}`)
+      navigate(`/${rootServiceId}/service/${service.id}`)
     };
 
     postMessageToParent({
@@ -121,12 +123,17 @@ export default function ServiceCatalog () {
   }, [data.services, config.customCards])
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.header}>
         <div className={styles.search}>
           <input
-            onChange={onChangeSearch}
-            name='search' type='text' autoComplete='off' className={styles.searchInput} placeholder='Search integrations...' />
+            onChange={handleSearchChange}
+            name='search'
+            type='text'
+            autoComplete='off'
+            className={styles.searchInput}
+            placeholder={'Search integrations...'}
+          />
           <Icon icon={data.searchLoading ? 'loading' : 'search'} size={18} className={styles.searchIcon} />
         </div>
       </div>
@@ -134,25 +141,25 @@ export default function ServiceCatalog () {
       <div className={[styles.list, data.loading && styles.listLoading].join(' ')}>
         {data.loading && [...Array(60)].map((i: number) => (
           <div key={i?.toString()} className={styles.listLink}>
-            <div className={styles.listItem} />
+            <Card className={styles.listItem} />
           </div>
         ))}
 
         {!data.loading && services.map(service => (
           <div key={service.id} className={styles.listLink} onClick={() => { handleServiceClick(service) }}>
-            <div className={styles.listItem}>
+            <Card className={styles.listItem}>
               <img src={service.iconURL} className={styles.listItemIcon} />
               <span className={styles.listItemName}>
                 {service.name}
               </span>
-            </div>
+            </Card>
           </div>
         ))}
       </div>
 
       {!data.loading && services?.length >= 60 && (
         <div className={styles.buttonWrapper}>
-          <Button loading={data.appendLoading} onClick={onClickLoadMore}>
+          <Button loading={data.appendLoading} onClick={handleLoadMoreClick}>
             {data.appendLoading ? 'Loading...' : 'Load more'}
           </Button>
         </div>

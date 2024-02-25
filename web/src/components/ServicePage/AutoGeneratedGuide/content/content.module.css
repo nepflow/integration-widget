@@ -1,5 +1,5 @@
 .steps {
-  padding-top: 10px;
+  padding-top: 2px;
 }
 
 .step {
@@ -27,16 +27,21 @@
 
 .childSteps {
   margin-top: 12px;
+  margin-bottom: -16px;
+  margin-right: -30px;
 }
 .childStep {
-  width: 320px;
+  width: 280px;
   min-height: 32px;
   border: solid 1px #ccc;
   border-radius: 8px;
   display: inline-block;
   vertical-align: top;
-  margin: 0 16px 16px 0;
+  margin: 0 12px 24px 0;
   overflow: hidden;
+}
+.childStep:last-child {
+  margin-right: 0;
 }
 .childStepPic {
   width: 100%;
@@ -49,9 +54,4 @@
   line-height: 20px;
   padding: 7px 12px;
   border-top: solid 1px #ccc;
-}
-
-.divider {
-  border-bottom: solid 1px #ccc;
-  margin: 35px 0;
 }
