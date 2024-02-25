@@ -1,4 +1,4 @@
-export type IntegrationGuideChildStepType = 'zapierTriggerClick' | 'zapierActionClick' | 'zapierTriggerAccountClick' | 'zapierActionAccountClick' | 'zapierTriggerDetails' | 'zapierActionDetails' | 'zapierTriggerTest';
+export type IntegrationGuideChildStepType = 'zapierTriggerClick' | 'zapierActionClick' | 'zapierTriggerAccountClick' | 'zapierActionAccountClick' | 'zapierTriggerDetails' | 'zapierActionDetails' | 'zapierTriggerTest'
 
 interface ChildStep {
   text: string

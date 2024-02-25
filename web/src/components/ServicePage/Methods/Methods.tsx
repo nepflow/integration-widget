@@ -81,7 +81,7 @@ export default function Methods () {
 
       {hasRecommendations && (
         <div className={styles.recommendations}>
-          {data.recommendations.map((recommendation, i) => (
+          {data.recommendations.map((recommendation) => (
             <Card key={recommendation.title} className={[styles.card, styles.recommendation]} onClick={() => { handleClickRecommendation(recommendation) }}>
               <div className={styles.recommendationIcons}>
                 <img src={recommendation.headServiceId === rootService.id ? rootService.iconURL : connectedService.iconURL} className={styles.recommendationIcon} />

@@ -1,4 +1,4 @@
-import { IntegrationGuideChildStepType } from '../../models/integrationGuide'
+import { type IntegrationGuideChildStepType } from '../../models/integrationGuide'
 import { type Service, type ServiceAction, type ServiceTrigger } from '../../models/service'
 import styles from './specialImage.module.css'
 
