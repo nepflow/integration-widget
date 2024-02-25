@@ -1,26 +1,17 @@
+import { IntegrationGuideChildStepType } from '../../models/integrationGuide'
 import { type Service, type ServiceAction, type ServiceTrigger } from '../../models/service'
 import styles from './specialImage.module.css'
-
-enum SpecialImageType {
-  ZapierTriggerClick = 'zapierTriggerClick',
-  ZapierActionClick = 'zapierActionClick',
-  ZapierTriggerAccountClick = 'zapierTriggerAccountClick',
-  ZapierActionAccountClick = 'zapierActionAccountClick',
-  ZapierTriggerDetails = 'zapierTriggerDetails',
-  ZapierActionDetails = 'zapierActionDetails',
-  ZapierTriggerTest = 'zapierTriggerTest',
-}
 
 interface Props {
   service: Service
   secondService: Service
   trigger?: ServiceTrigger
   action?: ServiceAction
-  type?: SpecialImageType
+  type?: IntegrationGuideChildStepType
 }
 
 function SpecialImage ({ type, service, secondService, trigger, action }: Props) {
-  if (type === SpecialImageType.ZapierTriggerClick) {
+  if (type === 'zapierTriggerClick') {
     return (
       <div className={styles.image} style={{ backgroundImage: 'url(/zapierTriggerClick.png)', height: '123px' }}>
         <div
@@ -45,7 +36,7 @@ function SpecialImage ({ type, service, secondService, trigger, action }: Props)
     )
   }
 
-  if (type === SpecialImageType.ZapierActionClick) {
+  if (type === 'zapierActionClick') {
     return (
       <div className={styles.image} style={{ backgroundImage: 'url(/zapierActionClick.png)', height: '123px' }}>
         <div
@@ -75,7 +66,7 @@ function SpecialImage ({ type, service, secondService, trigger, action }: Props)
     )
   }
 
-  if (type === SpecialImageType.ZapierTriggerAccountClick || type === SpecialImageType.ZapierActionAccountClick) {
+  if (type === 'zapierTriggerAccountClick' || type === 'zapierActionAccountClick') {
     return (
       <div className={styles.image} style={{ backgroundImage: 'url(/zapierAccountClick.png)', height: '105px' }}>
         <div
@@ -105,9 +96,9 @@ function SpecialImage ({ type, service, secondService, trigger, action }: Props)
     )
   }
 
-  if (type === SpecialImageType.ZapierTriggerDetails || type === SpecialImageType.ZapierActionDetails) {
+  if (type === 'zapierTriggerDetails' || type === 'zapierActionDetails') {
     return (
-      <div className={styles.image} style={{ backgroundImage: type === SpecialImageType.ZapierTriggerDetails ? 'url(/zapierTriggerDetails.png)' : 'url(/zapierActionDetails.png)', height: '105px' }}>
+      <div className={styles.image} style={{ backgroundImage: type === 'zapierTriggerDetails' ? 'url(/zapierTriggerDetails.png)' : 'url(/zapierActionDetails.png)', height: '105px' }}>
         <div
           className={styles.imageText}
           style={{
@@ -120,13 +111,13 @@ function SpecialImage ({ type, service, secondService, trigger, action }: Props)
             fontWeight: '500'
           }}
         >
-          {(type === SpecialImageType.ZapierTriggerDetails ? trigger?.needs?.[0] : action?.needs?.[0]) || 'Choose value'}
+          {(type === 'zapierTriggerDetails' ? trigger?.needs?.[0] : action?.needs?.[0]) || 'Choose value'}
         </div>
       </div>
     )
   }
 
-  if (type === SpecialImageType.ZapierTriggerTest) {
+  if (type === 'zapierTriggerTest') {
     return (
       <div className={styles.image} style={{ backgroundImage: 'url(/zapierTriggerTest.png)', height: '106px' }}>
         <img

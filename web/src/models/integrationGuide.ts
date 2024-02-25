@@ -1,7 +1,9 @@
+export type IntegrationGuideChildStepType = 'zapierTriggerClick' | 'zapierActionClick' | 'zapierTriggerAccountClick' | 'zapierActionAccountClick' | 'zapierTriggerDetails' | 'zapierActionDetails' | 'zapierTriggerTest';
+
 interface ChildStep {
   text: string
   picUrl?: string
-  type: 'zapierTriggerClick' | 'zapierActionClick' | 'zapierTriggerAccountClick' | 'zapierActionAccountClick'
+  type?: IntegrationGuideChildStepType
 }
 
 interface Step {
