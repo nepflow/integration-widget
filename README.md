@@ -67,7 +67,7 @@ const widget = new NepflowIntegrationWidget(
 );
 ```
 
-If your app is integrated with [Zapier](https://zapier.com/), your users can see [integration guides](https://nepflow.dev/#guides):
+If your app is integrated with [Zapier](https://zapier.com/), your users can see [integration guides](https://nepflow.dev/#guides) and Zapier templates:
 
 ```javascript
 const widget = new NepflowIntegrationWidget(
@@ -86,7 +86,7 @@ const widget = new NepflowIntegrationWidget(
 );
 ```
 
-You can use `customCards` parameter to show your native integrations and replacing existing Zapier apps:
+You can use `customCards` parameter to show your native integrations or replacing existing Zapier apps:
 
 ```javascript
 const widget = new NepflowIntegrationWidget(

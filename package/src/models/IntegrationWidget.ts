@@ -10,20 +10,36 @@ interface IframeConfig {
 export class IntegrationWidget {
   private readonly entityId: string
   private readonly baseUrl: string
+  private readonly params: IntegrationWidgetConfig
+  private readonly iframeParams: IframeConfig
 
   constructor (elementId: string, params: IntegrationWidgetConfig, iframeParams?: IframeConfig) {
     this.entityId = this.generateEntityId()
     this.baseUrl = iframeParams?.baseUrl ?? 'https://widget.nepflow.dev'
+    this.params = params
+    this.iframeParams = iframeParams ?? {}
 
+    // Get the widget element
     const widgetElement = document.getElementById(elementId)
     if (!widgetElement) {
       console.error('Integration widget element not found.')
       return
     }
 
+    // Create the iframe element
+    const iframe = this.createIFrame()
+
+    // Append the iframe to the element
+    widgetElement.innerHTML = ''
+    widgetElement.appendChild(iframe)
+
+    this.setupMessageHandler(iframe)
+  }
+
+  private getSearchParams (): URLSearchParams {
     // Create URLSearchParams from the params object
     const searchParams = new URLSearchParams()
-    for (const [key, value] of Object.entries(params)) {
+    for (const [key, value] of Object.entries(this.params)) {
       if (typeof value === 'boolean') {
         searchParams.append(key, value ? 'true' : '')
       } else if (typeof value === 'object') {
@@ -41,22 +57,28 @@ export class IntegrationWidget {
     // Add parent window host
     searchParams.append('appHost', window.location.host)
 
-    // Create the iframe element
+    return searchParams
+  }
+
+  // Create the iframe element
+  private createIFrame (): HTMLIFrameElement {
+    const searchParams = this.getSearchParams()
+
     const iframe = document.createElement('iframe')
-    iframe.src = `${this.baseUrl}/${params.zapierAppId || ''}?${searchParams.toString()}`
-    iframe.style.width = iframeParams?.width ?? '100%'
-    iframe.style.height = iframeParams?.height ?? '100%'
-    iframe.style.minHeight = iframeParams?.minHeight ?? '500px'
+    iframe.src = `${this.baseUrl}/${this.params.zapierAppId || ''}?${searchParams.toString()}`
+    iframe.style.width = this.iframeParams?.width ?? '100%'
+    iframe.style.height = this.iframeParams?.height ?? '100%'
+    iframe.style.minHeight = this.iframeParams?.minHeight ?? '500px'
     iframe.frameBorder = '0'
 
-    // Append the iframe to the integration-widget element
-    widgetElement.innerHTML = ''
-    widgetElement.appendChild(iframe)
+    return iframe
+  }
 
-    // Handler for messages from the iframe
+  // Setup handler for messages from the iframe
+  private setupMessageHandler (iframe: HTMLIFrameElement): void {
     window.addEventListener('message', (event) => {
       if (!event.origin.startsWith(this.baseUrl)) {
-        console.debug('[Nepflow] Received message from unknown origin:', event.origin)
+        console.debug('[Nepflow] Received message from unknown origin', event.origin)
         return
       }
 
@@ -73,14 +95,15 @@ export class IntegrationWidget {
           iframe.style.height = `${data.widgetHeight}px`
           break
         case 'handleCardClick':
-          if (typeof params.onCardClick === 'function') {
-            params.onCardClick(data.id as string)
+          if (typeof this.params.onCardClick === 'function') {
+            this.params.onCardClick(data.id as string)
           };
           break
       }
     })
   }
 
+  // Generate unique entity id
   private generateEntityId (): string {
     const prefix = 'integration-widget-'
     const randomSuffix = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)

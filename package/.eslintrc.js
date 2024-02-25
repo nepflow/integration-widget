@@ -27,6 +27,7 @@ module.exports = {
     "plugins": [
         "react"
     ],
+    "ignorePatterns": ["dist/"],
     "rules": {
         "@typescript-eslint/prefer-nullish-coalescing": "off",
         "@typescript-eslint/strict-boolean-expressions": "off"

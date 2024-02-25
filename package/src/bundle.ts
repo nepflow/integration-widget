@@ -2,7 +2,7 @@ import { IntegrationWidget as NepflowIntegrationWidget } from './models/Integrat
 
 declare global {
   interface Window {
-    NepflowIntegrationWidget: Function
+    NepflowIntegrationWidget: typeof NepflowIntegrationWidget
   }
 }
 
