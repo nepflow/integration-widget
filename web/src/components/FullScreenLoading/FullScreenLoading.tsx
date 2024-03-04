@@ -6,7 +6,7 @@ function FullScreenLoading () {
     <div
       className={styles.container}
     >
-      <Icon className={styles.containerLoadingIcon} icon='loading' size={48} />
+      <Icon className={styles.containerLoadingIcon} icon='loading' size={36} />
     </div>
   )
 }

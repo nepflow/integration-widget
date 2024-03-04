@@ -31,7 +31,7 @@ export default function Root () {
           postMessageToParent({
             action: 'setWidgetHeight',
             data: {
-              widgetHeight: height + (config.innerSpace * 2)
+              widgetHeight: height + (config.innerSpace * 2) + 50
             }
           })
         }
@@ -58,6 +58,10 @@ export default function Root () {
       getService(rootServiceId).then(service => { setRootService(service) })
     }
   }, [rootServiceId])
+
+  useEffect(() => {
+    postMessageToParent({ action: 'handleLoaded' })
+  }, [])
 
   return (
     <ConfigContext.Provider value={config}>

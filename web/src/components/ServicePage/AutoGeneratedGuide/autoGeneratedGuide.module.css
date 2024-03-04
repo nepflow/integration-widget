@@ -37,3 +37,13 @@
   margin-right: 8px;
   opacity: 0.8;
 }
+
+
+@media (max-width: 480px) {
+  .card { 
+    width: auto;
+    margin-left: -25px;
+    margin-right: -25px;
+    border-radius: 0;
+  }
+}

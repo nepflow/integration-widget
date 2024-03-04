@@ -55,3 +55,13 @@
   padding: 7px 12px;
   border-top: solid 1px #ccc;
 }
+
+@media (max-width: 480px) {
+  .childStep {
+    margin-right: 0;
+    display: block;
+  }
+  .childSteps {
+    margin: 16px 0 16px -24px;
+  }
+}

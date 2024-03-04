@@ -18,3 +18,10 @@
 .backButton:hover {
   background-color: rgba(0, 0, 0, 0.07);
 }
+
+@media (max-width: 480px) {
+  .backButton {
+    float: none;
+    margin-bottom: 16px;
+  }
+}

@@ -17,3 +17,10 @@
   line-height: 24px;
   color: #888;
 }
+
+@media (max-width: 480px) {
+  .banner {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

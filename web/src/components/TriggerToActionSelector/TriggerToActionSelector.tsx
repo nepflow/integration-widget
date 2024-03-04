@@ -121,7 +121,6 @@ export default function TriggerToActionSelector ({ action, trigger, rootService,
       <div className={styles.headerTrigger}>
         <div className={styles.headerFieldLabel}>Trigger</div>
         <Select
-          autoFocus={!trigger?.id}
           styles={selectStyles}
           placeholder='Select a trigger'
           isSearchable

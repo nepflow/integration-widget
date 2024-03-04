@@ -22,7 +22,7 @@ export default function ServiceCatalog () {
   const { rootServiceId } = useParams()
 
   const [search, setSearch] = useState('')
-  const [searchValue] = useDebounce(search, 1000)
+  const [searchValue] = useDebounce(search, 500)
 
   const config = useContext(ConfigContext)
 
@@ -33,21 +33,9 @@ export default function ServiceCatalog () {
     appendLoading: false
   })
 
-  const newCustomCardsCount = useMemo(() => {
+  const originalCustomCardsCount = useMemo(() => {
     return searchValue ? 0 : config.customCards?.filter(c => !c.replacedZapierAppId)?.length
   }, [config.customCards, searchValue])
-
-  useEffect(() => {
-    setData({ services: [], loading: true })
-
-    loadServices(undefined, 0, 60 - newCustomCardsCount)
-  }, [])
-
-  useEffect(() => {
-    setData({ services: [], loading: true })
-
-    loadServices(searchValue, 0, 60 - newCustomCardsCount)
-  }, [searchValue, newCustomCardsCount])
 
   const loadServices = useCallback(async (search: string = '', skip: number = 0, take: number = 60) => {
     const services = await getServices(rootServiceId || undefined, search, skip, take)
@@ -60,10 +48,22 @@ export default function ServiceCatalog () {
     })
   }, [data])
 
+  useEffect(() => {
+    setData({ services: [], loading: true })
+
+    loadServices(undefined, 0, 60 - originalCustomCardsCount)
+  }, [])
+
+  useEffect(() => {
+    setData({ services: [], loading: true })
+
+    loadServices(searchValue, 0, 60 - originalCustomCardsCount)
+  }, [searchValue, originalCustomCardsCount])
+
   const loadNextServices = useCallback(async () => {
     setData({ services: data.services, appendLoading: true })
 
-    await loadServices(searchValue, data.services.length + newCustomCardsCount)
+    await loadServices(searchValue, data.services.length + originalCustomCardsCount)
   }, [data, searchValue])
 
   const handleSearchChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
@@ -106,7 +106,13 @@ export default function ServiceCatalog () {
               actions: []
             }
           };
-        } else if (!searchValue) {
+        } else {
+          const isCardMatch = () => `${customCard.name} ${customCard.id}`.toLowerCase().includes(searchValue.trim().toLowerCase())
+
+          if (searchValue && !isCardMatch()) {
+            return
+          }
+
           services.unshift({
             id: customCard.id,
             name: customCard.name,
@@ -120,7 +126,7 @@ export default function ServiceCatalog () {
     };
 
     return services
-  }, [data.services, config.customCards])
+  }, [data.services, config.customCards, searchValue])
 
   return (
     <div>

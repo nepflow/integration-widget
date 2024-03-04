@@ -71,3 +71,24 @@
   text-overflow: ellipsis;
 }
 
+
+@media (max-width: 480px) {
+  .card { 
+    width: auto;
+    margin-left: -25px;
+    margin-right: -25px;
+    border-radius: 0;
+  }
+
+  .recommendationIcons {
+    float: none;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 12px;
+  }
+
+  .recommendationTitle {
+    white-space: normal;
+    line-height: 24px;
+  }
+}

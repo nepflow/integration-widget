@@ -44,9 +44,9 @@
 .listItem {
   min-width: 0;
   border-radius: 12px;
-  padding: 0 18px 0 56px;
-  line-height: 54px;
-  height: 56px;
+  padding: 0 18px 0 52px;
+  line-height: 51px;
+  height: 52px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -77,7 +77,7 @@
   position: absolute;
   left: 16px;
   top: 14px;
-  width: 26px;
+  width: 22px;
 }
 
 .buttonWrapper {
@@ -117,7 +117,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
   .listLink {
     flex: 0 0 100%;
     max-width: 100%;
