@@ -12,6 +12,9 @@ export class IntegrationWidget {
   private readonly baseUrl: string
   private readonly params: IntegrationWidgetConfig
   private readonly iframeParams: IframeConfig
+  private readonly widgetElement: HTMLElement | null
+  private readonly iframeElement: HTMLIFrameElement | null = null
+  private readonly progressBarElement: HTMLDivElement | null = null
 
   constructor (elementId: string, params: IntegrationWidgetConfig, iframeParams?: IframeConfig) {
     this.entityId = this.generateEntityId()
@@ -20,20 +23,75 @@ export class IntegrationWidget {
     this.iframeParams = iframeParams ?? {}
 
     // Get the widget element
-    const widgetElement = document.getElementById(elementId)
-    if (!widgetElement) {
+    this.widgetElement = document.getElementById(elementId)
+    if (!this.widgetElement) {
       console.error('Integration widget element not found.')
       return
     }
 
-    // Create the iframe element
-    const iframe = this.createIFrame()
+    this.widgetElement.innerHTML = ''
+    
+    // Append the progress bar
+    if (!this.params.hideIframeProgressBar) {
+      this.progressBarElement = this.createProgressBar()
+      this.widgetElement.appendChild(this.progressBarElement)
+    }
+    
+    // Append the iframe
+    this.iframeElement = this.createIFrame()
+    this.widgetElement.appendChild(this.iframeElement)
 
-    // Append the iframe to the element
-    widgetElement.innerHTML = ''
-    widgetElement.appendChild(iframe)
+    this.setupMessageHandler(this.iframeElement)
+  }
 
-    this.setupMessageHandler(iframe)
+  private createProgressBar (): HTMLDivElement {
+    // Add a CSS rotation animation
+    const styleSheet = document.createElement('style')
+    styleSheet.type = 'text/css'
+    styleSheet.innerText = `
+    @keyframes nepflowWidgetProgressBarRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }`;
+    (document.head || document.body).appendChild(styleSheet)
+
+    // Create progress bar container
+    const progressBar = document.createElement('div')
+    progressBar.style.position = 'relative'
+    progressBar.style.backgroundColor = this.params.backgroundColor
+    progressBar.style.width = '100%'
+    progressBar.style.minHeight = '100px'
+    
+    // Show only after 0.3s
+    progressBar.style.opacity = '0'
+    progressBar.style.transition = '0.3s'
+    setTimeout(() => {
+      progressBar.style.opacity = '1'
+    }, 0)
+
+    // Create progress bar icon
+    const progressBarIcon = document.createElement('div')
+    progressBarIcon.style.backgroundImage = 'url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-loader-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3a9 9 0 1 0 9 9" /></svg>\')'
+    progressBarIcon.style.position = 'absolute'
+    progressBarIcon.style.top = '50%'
+    progressBarIcon.style.left = '50%'
+    progressBarIcon.style.margin = '-18px 0 0 -18px'
+    progressBarIcon.style.backgroundSize = '100% 100%'
+    progressBarIcon.style.backgroundPosition = 'center center'
+    progressBarIcon.style.opacity = '0.5'
+    progressBarIcon.style.width = '36px'
+    progressBarIcon.style.height = '36px'
+    progressBarIcon.style.animation = 'nepflowWidgetProgressBarRotate 0.5s linear infinite'
+
+    progressBar.appendChild(progressBarIcon)
+
+    return progressBar
+  }
+
+  private hideProgressBar (): void {
+    if (this.progressBarElement) {
+      this.progressBarElement.style.display = 'none'
+    }
   }
 
   private getSearchParams (): URLSearchParams {
@@ -91,6 +149,9 @@ export class IntegrationWidget {
       console.debug('[Nepflow] Received message:', action, data)
 
       switch (action) {
+        case 'handleLoaded':
+          this.hideProgressBar()
+          break
         case 'setWidgetHeight':
           iframe.style.height = `${data.widgetHeight}px`
           break

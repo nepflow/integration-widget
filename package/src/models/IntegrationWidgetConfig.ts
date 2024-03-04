@@ -12,6 +12,7 @@ export interface IntegrationWidgetConfig {
   cardBorderColor: string
   innerSpace: number
   autoVerticalResize: boolean
+  hideIframeProgressBar?: boolean // false by default
   onCardClick?: (id: string) => void
   customCards?: CustomCard[]
 }
